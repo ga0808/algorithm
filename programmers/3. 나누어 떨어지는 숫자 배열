@@ -1,0 +1,9 @@
+def solution(arr, divisor):
+    
+    num_arr = [ i for i in arr if i % divisor == 0]
+    num_arr.sort()
+    
+    if len(num_arr)==0:
+        num_arr.append(-1)
+    
+    return num_arr
