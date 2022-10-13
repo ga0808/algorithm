@@ -1,0 +1,10 @@
+def solution(absolutes, signs):
+    nums_lst = []
+    for i in range(0,len(signs)):
+        if signs[i] == False:
+            nums_lst.append(absolutes[i] * -1)
+        elif signs[i] == True:
+            nums_lst.append(absolutes[i])
+    answer = sum(nums_lst)
+    return answer
+ 
