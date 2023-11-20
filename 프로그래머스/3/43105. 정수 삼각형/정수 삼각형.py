@@ -1,10 +1,4 @@
 def solution(triangle):
-    answer = [0]
-    #0 ~ -1
-    #1 ~ 끝
-    
-    
-    
     for row_idx, row in enumerate(triangle): # 0 ,7
         if row_idx == 0:
             continue
