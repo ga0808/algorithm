@@ -29,19 +29,17 @@ else:
       #min(c, mid)하나로 가능함
 
     #총 청구액이 우리가 가진 예산과 대소 비교 -> start, end 조정 해줘야함
-    # 이때 고려할 것 하나더 : 해당 문제는 return이 아니라 print를 해야함 - 즉, while문이 모두 종료된 이후 start > end가 되면 print(start)를 하고 끝남
-    # 때문에 while문 break로 탈출하면서 print 하면 안된다는 얘기 - 좀더 코드 짜면서 보겠음
-
     #총 청구액 > 예산 -> mid를 낮추기 위해 end를 더 낮춰야함
     if total > budget:
       end = mid-1
     #총 청구액 < 예산 -> mid를 높이기 위해 start를 더 높여야함
     elif total < budget:
       start = mid+1
+    #총 청구액 = 예산 -> mid 출력 
     else :
       print(mid)
       break
-
-    if start > end:
+        
+    if start>end :
       print(end)
       break
