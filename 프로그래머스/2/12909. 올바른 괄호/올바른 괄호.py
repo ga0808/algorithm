@@ -1,15 +1,13 @@
 def solution(s):
-    answer = True
-    cnt =0
-    for i in range(len(s)):
-        if s[i] == ')':
-            cnt -=1
-            if cnt < 0:
+    stack = []
+    for i in s:
+        if i == '(':
+            stack.append(i)
+        else:
+            if stack == []: # 오른쪽 괄호로 시작할경우
                 return False
-        elif s[i] == '(':
-            cnt +=1
-        
-    if cnt != 0:
+            else:
+                stack.pop()
+    if stack != []: # 다 끝났는데 왼쪽 괄호가 스택에 남아있을경우
         return False
-
-    return answer
+    return True
