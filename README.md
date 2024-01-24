@@ -4,6 +4,7 @@
 ### 🚀 Bronze
 | 문제번호 | 링크 |
 | ----- | ----- |
+|10872. 팩토리얼|[링크](./%EB%B0%B1%EC%A4%80/Bronze/10872.%E2%80%85%ED%8C%A9%ED%86%A0%EB%A6%AC%EC%96%BC/%ED%8C%A9%ED%86%A0%EB%A6%AC%EC%96%BC.py)|
 |1193. 분수찾기|[링크](./%EB%B0%B1%EC%A4%80/Bronze/1193.%E2%80%85%EB%B6%84%EC%88%98%EC%B0%BE%EA%B8%B0/README.md)|
 |25400. 제자리|[링크](./%EB%B0%B1%EC%A4%80/Bronze/25400.%E2%80%85%EC%A0%9C%EC%9E%90%EB%A6%AC/README.md)|
 |25558. 내비게이션|[링크](./%EB%B0%B1%EC%A4%80/Bronze/25558.%E2%80%85%EB%82%B4%EB%B9%84%EA%B2%8C%EC%9D%B4%EC%85%98/README.md)|
