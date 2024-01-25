@@ -1,27 +1,30 @@
 #첫번째로 입력되는 값 = 리스트의 길이
-lst_len = int( input() )
+n = int( input() )
 #두번째로 입력되는 값 = 리스트
-lst = list(map(int, input().split()))
+nums = list(map(int, input().split()))
 
 #문제 분석
 #카드 cnt개를 제거해서 - n번째에 숫자 n 카드가 위치할 경우를 만들어야함
+#0인덱스에 1, 1인덱스에 2 , 2인덱스에 3 ...이 있어야함
 
-#모든 카드가 제거할 경우 처리 필요 - 제자리 상태 아님
-if 1 not in lst:
-  print( len(lst) )
+##아래 else 부터 구현해보는게 더 좋을 것 같음
+#주어진 숫자에 1이 없을 경우 -> 제자리 상태가 될 수 없음 -> 모든 카드 제거필요
+if 1 not in nums:
+  print(n)
+
+#리스트 내에, 숫자 1 나타나기 이전에 있는 카드 들은 모두 제거
+#          1 나타난 이후에는 - 찾는 숫자를 1씩 증가시키면서, 찾으며 중간에 찾는 숫자가 아니면 모두 제거
 else:
-  #몇개의 카드를 제거했는지 반환해야함
-  cnt = 0
-  find_n =1
+  cnt = 0 #제거할 카드 개수 세는 변수
+  find_n =1 #현재 찾는 숫자
 
-  #1전의 카드 개수 + 1~2사이 카드 개수 + ...+  n-1~n 사이 카드 개수 의 합
-  for l in lst:
-    # print(l)
-    if l != find_n: #다음으로 추가되는 수가 아니면
-      cnt += 1 
+  for i in nums: #리스트 내에 숫자 하나씩 꺼내옴
+    # print(i)
+    if i != find_n: #현재 찾고 있는 = 다음으로 추가되는 수가 아니면
+      cnt += 1 #제거할 카드라서 +1
       # print("cnt: ",cnt)
-    else:
-      find_n += 1
+    else: #현재 찾고 있는 = 다음으로 추가되는 수 라고 한다면
+      find_n += 1 #현재 찾고 있는 수를 다음 수로 갱신
       # print(find_n)
 
   print(cnt)
