@@ -1,49 +1,45 @@
-from pprint import pprint
 from copy import deepcopy
 import sys
-# print(sys.__dir__())
 sys.setrecursionlimit(int(10**9))
 
-def solution(land):
-    #행, 열 인덱스
-    def dfs(i,j,visited_land,return_lst):
-
-        #탐색 불가 
-        if i<0 or j<0 or i>=n or j>=m:
-            return return_lst
-        
-        #탐색 안한 곳 (석유가 있는 곳으로 체킹안한 곳)
-        if visited_land[i][j]==1:
-            #석유 덩어리가 존재하는 가장 큰 컬럼 값
-            if return_lst[1] < j:
-                return_lst[1] = j
-            visited_land[i][j] = 0
-            return_lst[0] += 1
-            dfs(i-1,j,visited_land,return_lst)
-            dfs(i+1,j,visited_land,return_lst)
-            dfs(i,j-1,visited_land,return_lst)
-            dfs(i,j+1,visited_land,return_lst) 
-            return return_lst
+def dfs(row,col,r,c,land,return_lst):
+    #land 범위 밖
+    if r<0 or c<0 or r>=row or c>=col:
         return return_lst
     
-    visited_land = deepcopy(land)
-    n = len(land)
-    m = len(land[0])
+    #석유 존재하는 곳
+    if land[r][c] == 1:
+        #시추 처리
+        land[r][c] = 0
+        #시추된 석유양 +1
+        return_lst[0] += 1
+        
+        if return_lst[1] < c:
+            return_lst[1] = c
+            
+        dfs(row,col,r-1,c,land,return_lst)
+        dfs(row,col,r+1,c,land,return_lst)
+        dfs(row,col,r,c-1,land,return_lst)
+        dfs(row,col,r,c+1,land,return_lst)
+        return return_lst
     
-    #석유 양 계속 더하여 갱신할 리스트
-    oil_lst = [0]*m
+    return return_lst
 
-    for col in range(m):
-        for row in range(n):
-            return_lst = [0, col]
-            if land[row][col] == 1 :
-                oil_quantity, col_range = dfs(row,col,visited_land,return_lst)
-                # print(col,col_range, oil_quantity)
-                if oil_quantity!=0:
-                    # print(oil_quantity,col,col_range )
-                    # print("!=0",col,col_range, oil_quantity)
-                    for c in range(col,col_range+1):
-                        # print("c",c)
-                        oil_lst[c] += oil_quantity
-    # print(oil_lst)
+def solution(land):
+    #행
+    row = len(land)
+    #열
+    col = len(land[0])
+
+    oil_lst = [0]*col
+    
+    for c in range(col):
+        
+        for r in range(row):
+            return_lst = [0,c]
+            if land[r][c] == 1:
+                oil_quantity, col_range = dfs(row,col,r,c,land,return_lst)
+                if oil_quantity != 0:
+                    for o_c in range(c, col_range+1):
+                        oil_lst[o_c] += oil_quantity
     return max(oil_lst)
